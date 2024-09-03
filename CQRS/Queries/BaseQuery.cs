@@ -17,7 +17,7 @@ public abstract class BaseQuery
     /// <summary>
     /// Gets or sets the query result.
     /// </summary>
-    public object Result { get; set; }
+    public object? Result { get; set; }
 
     /// <summary>
     /// Executes the query and returns the result.

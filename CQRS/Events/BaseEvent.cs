@@ -11,17 +11,8 @@ namespace CQRS.Events;
 /// providing a common structure for managing events.
 /// </remarks>
 [BsonDiscriminator(Required = true)]
-public abstract class BaseEvent : Message
+public abstract class BaseEvent(string type) : Message
 {
-    /// <summary>
-    /// Initializes a new instance of the <see cref="BaseEvent"/> class.
-    /// </summary>
-    /// <param name="type">The type of the event.</param>
-    protected BaseEvent(string type)
-    {
-        Type = type;
-    }
-
     /// <summary>
     /// Gets or sets the version of the event.
     /// </summary>
@@ -30,10 +21,10 @@ public abstract class BaseEvent : Message
     /// <summary>
     /// Gets or sets the type of the event.
     /// </summary>
-    public string Type { get; set; }
+    public string Type { get; set; } = type;
 
     /// <summary>
     /// Gets or sets the aggregate identifier for the event.
     /// </summary>
-    public string Aggregate { get; set; }
+    public required string Aggregate { get; set; }
 }
